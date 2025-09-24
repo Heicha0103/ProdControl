@@ -3,7 +3,15 @@
 @section('content')
 <div class="container">
     <h1>Materias Primas</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <a href="{{ route('materias_primas.create') }}" class="btn btn-primary mb-3">Nueva Materia Prima</a>
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -17,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($materias_primas as $materia)
+            @forelse($materias_primas as $materia)
             <tr>
                 <td>{{ $materia->id_materia }}</td>
                 <td>{{ $materia->nombre }}</td>
@@ -27,13 +35,19 @@
                 <td>{{ $materia->unidad_medida }}</td>
                 <td>
                     <a href="{{ route('materias_primas.edit', $materia) }}" class="btn btn-sm btn-warning">Editar</a>
-                    <form action="{{ route('materias_primas.destroy', $materia) }}" method="POST" style="display:inline">
-                        @csrf @method('DELETE')
+
+                    <form action="{{ route('materias_primas.destroy', $materia) }}" method="POST" style="display:inline" onsubmit="return confirm('¿Eliminar esta materia prima?');">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="7" class="text-center">No hay materias primas registradas</td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

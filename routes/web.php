@@ -7,15 +7,12 @@ use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\OrdenProduccionController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');*/
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
@@ -27,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
      // Recursos del sistema de gestión de producción
+    Route::resource('users', UserController::class); 
     Route::resource('materias_primas', MateriaPrimaController::class);
     Route::resource('productos', ProductoController::class);
     Route::resource('ordenes_produccion', OrdenProduccionController::class)->parameters(['ordenes_produccion' => 'ordenProduccion']);;

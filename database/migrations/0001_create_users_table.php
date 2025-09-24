@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('rol', ['admin', 'operador', 'supervisor'])->default('operador'); // nuevo campo rol
+            $table->enum('estado', ['activo', 'inactivo'])->default('activo'); // nuevo campo estado
             $table->rememberToken();
             $table->timestamps();
         });
@@ -28,6 +30,8 @@ return new class extends Migration
             'name' => 'Administrador',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'), // puedes cambiar la clave
+            'rol' => 'admin',
+            'estado' => 'activo',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

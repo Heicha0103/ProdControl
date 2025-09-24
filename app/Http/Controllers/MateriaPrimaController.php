@@ -58,9 +58,10 @@ class MateriaPrimaController extends Controller
         return redirect()->route('materias_primas.index')->with('success', 'Materia prima actualizada correctamente.');
     }
 
-    public function destroy(MateriaPrima $materiaPrima)
+    public function destroy(MateriaPrima $materias_prima)
     {
-        $materiaPrima->delete();
+        $materias_prima->delete();
         return redirect()->route('materias_primas.index')->with('success', 'Materia prima eliminada correctamente.');
     }
+
 }
