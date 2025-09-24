@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
      // Recursos del sistema de gestión de producción
     Route::resource('users', UserController::class); 
+
     Route::resource('materias_primas', MateriaPrimaController::class);
     Route::resource('productos', ProductoController::class);
     Route::resource('ordenes_produccion', OrdenProduccionController::class)->parameters(['ordenes_produccion' => 'ordenProduccion']);;

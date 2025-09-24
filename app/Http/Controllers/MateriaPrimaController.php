@@ -13,6 +13,7 @@ class MateriaPrimaController extends Controller
         return view('materias_primas.index', compact('materias_primas'));
     }
 
+
     public function create()
     {
         return view('materias_primas.create');

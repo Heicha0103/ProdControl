@@ -10,6 +10,14 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    
+    <!-- Input de búsqueda -->
+    <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Buscar producto..." 
+    >
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -21,7 +29,7 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="dataTable">
             @forelse($productos as $producto)
                 <tr>
                     <td>{{ $producto->id_producto }}</td>
@@ -45,4 +53,18 @@
         </tbody>
     </table>
 </div>
+
+<!-- Script -->
+<script>
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+        let filter = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#dataTable tr");
+
+        rows.forEach(row => {
+            let text = row.innerText.toLowerCase();
+            row.style.display = text.includes(filter) ? "" : "none";
+        });
+    });
+</script>
+
 @endsection
