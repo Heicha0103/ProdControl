@@ -6,10 +6,28 @@
 
     <div class="card">
         <div class="card-body">
-            <p><strong>ID:</strong> {{ $detalle->id_detalle }}</p>
-            <p><strong>Orden:</strong> {{ $detalle->orden->id_orden }} - {{ $detalle->orden->producto->nombre }}</p>
-            <p><strong>Materia Prima:</strong> {{ $detalle->materiaPrima->nombre }}</p>
-            <p><strong>Cantidad Usada:</strong> {{ $detalle->cantidad_usada }}</p>
+            <p><strong>ID:</strong> {{ $detalleOrden->id_detalle }}</p>
+
+            <p><strong>Orden:</strong>
+                @if($detalleOrden->ordenProduccion)
+                    {{ $detalleOrden->ordenProduccion->id_orden }}
+                    @if($detalleOrden->ordenProduccion->producto)
+                        - {{ $detalleOrden->ordenProduccion->producto->nombre }}
+                    @endif
+                @else
+                    N/A
+                @endif
+            </p>
+
+            <p><strong>Materia Prima:</strong>
+                @if($detalleOrden->materiaPrima)
+                    {{ $detalleOrden->materiaPrima->nombre }}
+                @else
+                    N/A
+                @endif
+            </p>
+
+            <p><strong>Cantidad Usada:</strong> {{ $detalleOrden->cantidad_usada }}</p>
         </div>
     </div>
 
