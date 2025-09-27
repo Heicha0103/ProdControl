@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producción | ProdControl</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/produccion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo-leaf.png" alt="ProdControl Logo" class="sidebar-logo">
+                <h1>ProdControl</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ordenes.html">
+                            <span class="material-symbols-rounded">assignment</span>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="produccion.html">
+                            <span class="material-symbols-rounded">precision_manufacturing</span>
+                            <span>Producción</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventario.html">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calidad.html">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Control de Calidad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reportes.html">
+                            <span class="material-symbols-rounded">monitoring</span>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="configuracion.html">
+                            <span class="material-symbols-rounded">settings</span>
+                            <span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <span class="material-symbols-rounded">search</span>
+                    <input type="search" placeholder="Buscar línea de producción...">
+                </div>
+                <div class="user-menu">
+                    <div class="menu-buttons">
+                        <button class="icon-button" title="Notificaciones">
+                            <span class="material-symbols-rounded">notifications</span>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="icon-button" title="Ayuda">
+                            <span class="material-symbols-rounded">help</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Juan Pérez</span>
+                            <span class="user-role">Supervisor de Producción</span>
+                        </div>
+                        <button class="icon-button">
+                            <span class="material-symbols-rounded">expand_more</span>
+                        </button>
+                        <div class="user-dropdown">
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-rounded">help</span>
+                                Ayuda
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <span class="material-symbols-rounded">logout</span>
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Production Content -->
+            <div class="production-content">
+                <!-- Production Overview -->
+                <div class="production-overview">
+                    <div class="page-header">
+                        <h1>Estado de Producción</h1>
+                        <div class="quick-stats">
+                            <div class="stat operational">
+                                <span class="material-symbols-rounded">check_circle</span>
+                                3 Líneas Operativas
+                            </div>
+                            <div class="stat">
+                                <span class="material-symbols-rounded">speed</span>
+                                87% Eficiencia
+                            </div>
+                            <div class="stat">
+                                <span class="material-symbols-rounded">pending_actions</span>
+                                12 Órdenes
+                            </div>
+                            <div class="stat">
+                                <span class="material-symbols-rounded">thumb_up</span>
+                                98.5% Calidad
+                            </div>
+                        </div>
+                        <div class="overview-actions">
+                            <button class="btn-secondary">
+                                <span class="material-symbols-rounded">download</span>
+                                Exportar Datos
+                            </button>
+                            <button class="btn-primary">
+                                <span class="material-symbols-rounded">add</span>
+                                Nueva Línea
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="production-table">
+                            <thead>
+                                <tr>
+                                    <th>Línea</th>
+                                    <th>Estado</th>
+                                    <th>Producto</th>
+                                    <th>Orden</th>
+                                    <th>Progreso</th>
+                                    <th>Eficiencia</th>
+                                    <th>Velocidad</th>
+                                    <th>Defectos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="line-name">Línea 1</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge operational">
+                                            <span class="material-symbols-rounded">check_circle</span>
+                                            Operativa
+                                        </span>
+                                    </td>
+                                    <td>Salsa de Tomate</td>
+                                    <td>#12345</td>
+                                    <td class="progress-cell">
+                                        <div class="mini-progress">
+                                            <span>65%</span>
+                                            <div class="progress" style="width: 65%"></div>
+                                        </div>
+                                        <small>3,250/5,000</small>
+                                    </td>
+                                    <td><span class="metric good">92%</span></td>
+                                    <td>850 u/h</td>
+                                    <td>0.8%</td>
+                                    <td class="actions">
+                                        <button class="btn-icon" title="Ver Detalles">
+                                            <span class="material-symbols-rounded">visibility</span>
+                                        </button>
+                                        <button class="btn-icon" title="Editar">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon" title="Más Acciones">
+                                            <span class="material-symbols-rounded">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="line-name">Línea 2</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge warning">
+                                            <span class="material-symbols-rounded">warning</span>
+                                            Mantenimiento
+                                        </span>
+                                    </td>
+                                    <td>Salsa BBQ</td>
+                                    <td>#12346</td>
+                                    <td class="progress-cell">
+                                        <div class="mini-progress warning">
+                                            <span>40%</span>
+                                            <div class="progress" style="width: 40%"></div>
+                                        </div>
+                                        <small>1,200/3,000</small>
+                                    </td>
+                                    <td><span class="metric warning">75%</span></td>
+                                    <td>600 u/h</td>
+                                    <td>1.2%</td>
+                                    <td class="actions">
+                                        <button class="btn-icon" title="Ver Detalles">
+                                            <span class="material-symbols-rounded">visibility</span>
+                                        </button>
+                                        <button class="btn-icon" title="Editar">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon" title="Más Acciones">
+                                            <span class="material-symbols-rounded">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="line-name">Línea 3</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge operational">
+                                            <span class="material-symbols-rounded">check_circle</span>
+                                            Operativa
+                                        </span>
+                                    </td>
+                                    <td>Vegetales Mixtos</td>
+                                    <td>#12347</td>
+                                    <td class="progress-cell">
+                                        <div class="mini-progress">
+                                            <span>70%</span>
+                                            <div class="progress" style="width: 70%"></div>
+                                        </div>
+                                        <small>2,800/4,000</small>
+                                    </td>
+                                    <td><span class="metric good">95%</span></td>
+                                    <td>900 u/h</td>
+                                    <td>0.5%</td>
+                                    <td class="actions">
+                                        <button class="btn-icon" title="Ver Detalles">
+                                            <span class="material-symbols-rounded">visibility</span>
+                                        </button>
+                                        <button class="btn-icon" title="Editar">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon" title="Más Acciones">
+                                            <span class="material-symbols-rounded">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="inactive">
+                                    <td>
+                                        <span class="line-name">Línea 4</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge error">
+                                            <span class="material-symbols-rounded">error</span>
+                                            Detenida
+                                        </span>
+                                    </td>
+                                    <td colspan="2">Mantenimiento Programado (2 horas)</td>
+                                    <td class="progress-cell">
+                                        <div class="mini-progress error">
+                                            <span>0%</span>
+                                            <div class="progress" style="width: 0%"></div>
+                                        </div>
+                                        <small>0/0</small>
+                                    </td>
+                                    <td><span class="metric error">0%</span></td>
+                                    <td>0 u/h</td>
+                                    <td>--</td>
+                                    <td class="actions">
+                                        <button class="btn-icon" title="Ver Detalles">
+                                            <span class="material-symbols-rounded">visibility</span>
+                                        </button>
+                                        <button class="btn-icon" title="Editar">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon" title="Más Acciones">
+                                            <span class="material-symbols-rounded">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

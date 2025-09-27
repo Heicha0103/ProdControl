@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Calidad | ProdControl</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/calidad.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+</head>
+<body>
+    <!-- Modal de Nueva Inspección -->
+    <div class="modal" id="newInspectionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Inspección de Calidad</h2>
+                <button class="close-modal">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="productLine">Línea de Producción</label>
+                    <select id="productLine" name="productLine" required>
+                        <option value="">Seleccionar línea</option>
+                        <option value="linea1">Línea 1</option>
+                        <option value="linea2">Línea 2</option>
+                        <option value="linea3">Línea 3</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inspectionType">Tipo de Inspección</label>
+                        <select id="inspectionType" name="inspectionType" required>
+                            <option value="">Seleccionar tipo</option>
+                            <option value="rutinaria">Inspección Rutinaria</option>
+                            <option value="calidad">Control de Calidad</option>
+                            <option value="seguridad">Seguridad Alimentaria</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Prioridad</label>
+                        <select id="priority" name="priority" required>
+                            <option value="normal">Normal</option>
+                            <option value="alta">Alta</option>
+                            <option value="urgente">Urgente</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inspectionNotes">Notas</label>
+                    <textarea id="inspectionNotes" name="inspectionNotes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary modal-close">Cancelar</button>
+                    <button type="submit" class="btn-primary">Crear Inspección</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo-leaf.png" alt="ProdControl Logo" class="sidebar-logo">
+                <h1>ProdControl</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ordenes.html">
+                            <span class="material-symbols-rounded">assignment</span>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produccion.html">
+                            <span class="material-symbols-rounded">precision_manufacturing</span>
+                            <span>Producción</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventario.html">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="calidad.html">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Control de Calidad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reportes.html">
+                            <span class="material-symbols-rounded">monitoring</span>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="configuracion.html">
+                            <span class="material-symbols-rounded">settings</span>
+                            <span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <span class="material-symbols-rounded">search</span>
+                    <input type="search" placeholder="Buscar inspecciones...">
+                </div>
+                <div class="user-menu">
+                    <div class="menu-buttons">
+                        <button class="icon-button" title="Notificaciones">
+                            <span class="material-symbols-rounded">notifications</span>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="icon-button" title="Ayuda">
+                            <span class="material-symbols-rounded">help</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Juan Pérez</span>
+                            <span class="user-role">Supervisor de Producción</span>
+                        </div>
+                        <button class="icon-button">
+                            <span class="material-symbols-rounded">expand_more</span>
+                        </button>
+                        <div class="user-dropdown">
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-rounded">help</span>
+                                Ayuda
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <span class="material-symbols-rounded">logout</span>
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Quality Control Content -->
+            <div class="quality-content">
+                <div class="quality-header">
+                    <div class="header-main">
+                        <h1>Control de Calidad</h1>
+                        <div class="quality-metrics">
+                            <div class="metric-card">
+                                <span class="material-symbols-rounded">verified</span>
+                                <div class="metric-info">
+                                    <span class="metric-value">98.5%</span>
+                                    <span class="metric-label">Tasa de Aprobación</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <span class="material-symbols-rounded">assignment</span>
+                                <div class="metric-info">
+                                    <span class="metric-value">24</span>
+                                    <span class="metric-label">Inspecciones Hoy</span>
+                                </div>
+                            </div>
+                            <div class="metric-card warning">
+                                <span class="material-symbols-rounded">pending</span>
+                                <div class="metric-info">
+                                    <span class="metric-value">3</span>
+                                    <span class="metric-label">Pendientes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quality-actions">
+                        <div class="filters">
+                            <button class="filter-button active">Todas</button>
+                            <button class="filter-button">Pendientes</button>
+                            <button class="filter-button">En Proceso</button>
+                            <button class="filter-button">Completadas</button>
+                            <button class="filter-button warning">No Conformes</button>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-secondary">
+                                <span class="material-symbols-rounded">download</span>
+                                Exportar
+                            </button>
+                            <button class="btn-primary" data-modal="newInspectionModal">
+                                <span class="material-symbols-rounded">add</span>
+                                Nueva Inspección
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quality Inspections Table -->
+                <div class="table-container">
+                    <table class="quality-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Línea</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Inspector</th>
+                                <th>Resultados</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#QC-2509</td>
+                                <td>
+                                    <div class="line-info">
+                                        <span class="line-name">Línea 1</span>
+                                        <small>Salsa de Tomate</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="inspection-type">Control de Calidad</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge success">
+                                        <span class="material-symbols-rounded">check_circle</span>
+                                        Aprobado
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="date-info">
+                                        <span>25 Sept, 2025</span>
+                                        <small>10:30 AM</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inspector-info">
+                                        <span>Ana García</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="results-info">
+                                        <div class="result-bar">
+                                            <div class="bar-fill" style="width: 98%"></div>
+                                        </div>
+                                        <span class="result-value">98%</span>
+                                    </div>
+                                </td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Ver Detalles">
+                                        <span class="material-symbols-rounded">visibility</span>
+                                    </button>
+                                    <button class="btn-icon" title="Editar">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <button class="btn-icon" title="Descargar Reporte">
+                                        <span class="material-symbols-rounded">download</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#QC-2508</td>
+                                <td>
+                                    <div class="line-info">
+                                        <span class="line-name">Línea 2</span>
+                                        <small>Salsa BBQ</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="inspection-type">Seguridad Alimentaria</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge warning">
+                                        <span class="material-symbols-rounded">pending</span>
+                                        En Proceso
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="date-info">
+                                        <span>25 Sept, 2025</span>
+                                        <small>09:45 AM</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inspector-info">
+                                        <span>Carlos López</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="results-info">
+                                        <div class="result-bar warning">
+                                            <div class="bar-fill" style="width: 45%"></div>
+                                        </div>
+                                        <span class="result-value">En proceso</span>
+                                    </div>
+                                </td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Ver Detalles">
+                                        <span class="material-symbols-rounded">visibility</span>
+                                    </button>
+                                    <button class="btn-icon" title="Editar">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <button class="btn-icon" title="Más Opciones">
+                                        <span class="material-symbols-rounded">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#QC-2507</td>
+                                <td>
+                                    <div class="line-info">
+                                        <span class="line-name">Línea 3</span>
+                                        <small>Vegetales Mixtos</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="inspection-type">Inspección Rutinaria</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge error">
+                                        <span class="material-symbols-rounded">error</span>
+                                        No Conforme
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="date-info">
+                                        <span>25 Sept, 2025</span>
+                                        <small>09:15 AM</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inspector-info">
+                                        <span>María Ruiz</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="results-info">
+                                        <div class="result-bar error">
+                                            <div class="bar-fill" style="width: 65%"></div>
+                                        </div>
+                                        <span class="result-value">65%</span>
+                                    </div>
+                                </td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Ver Detalles">
+                                        <span class="material-symbols-rounded">visibility</span>
+                                    </button>
+                                    <button class="btn-icon" title="Acciones Correctivas">
+                                        <span class="material-symbols-rounded">build</span>
+                                    </button>
+                                    <button class="btn-icon" title="Más Opciones">
+                                        <span class="material-symbols-rounded">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/modals.js"></script>
+    <script src="js/calidad.js"></script>
+</body>
+</html>

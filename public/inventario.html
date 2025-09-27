@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario | ProdControl</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/inventario.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+</head>
+<body>
+    <!-- Modales -->
+    <div class="modal" id="newItemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nuevo Producto</h2>
+                <button class="close-modal">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="itemName">Nombre del Producto</label>
+                    <input type="text" id="itemName" name="itemName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="itemCategory">Categoría</label>
+                        <select id="itemCategory" name="itemCategory" required>
+                            <option value="">Seleccionar categoría</option>
+                            <option value="materias-primas">Materias Primas</option>
+                            <option value="productos">Productos Terminados</option>
+                            <option value="empaques">Material de Empaque</option>
+                            <option value="suministros">Suministros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemUnit">Unidad de Medida</label>
+                        <select id="itemUnit" name="itemUnit" required>
+                            <option value="">Seleccionar unidad</option>
+                            <option value="unidades">Unidades</option>
+                            <option value="kg">Kilogramos</option>
+                            <option value="litros">Litros</option>
+                            <option value="cajas">Cajas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="minStock">Stock Mínimo</label>
+                        <input type="number" id="minStock" name="minStock" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxStock">Stock Máximo</label>
+                        <input type="number" id="maxStock" name="maxStock" required min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="location">Ubicación</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notas</label>
+                    <textarea id="notes" name="notes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary modal-close">Cancelar</button>
+                    <button type="submit" class="btn-primary">Crear Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="adjustStockModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ajustar Stock</h2>
+                <button class="close-modal">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="adjustType">Tipo de Ajuste</label>
+                    <select id="adjustType" name="adjustType" required>
+                        <option value="entrada">Entrada</option>
+                        <option value="salida">Salida</option>
+                        <option value="ajuste">Ajuste de Inventario</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" id="quantity" name="quantity" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="reason">Motivo</label>
+                    <textarea id="reason" name="reason" rows="2" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary modal-close">Cancelar</button>
+                    <button type="submit" class="btn-primary">Registrar Ajuste</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo-leaf.png" alt="ProdControl Logo" class="sidebar-logo">
+                <h1>ProdControl</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ordenes.html">
+                            <span class="material-symbols-rounded">assignment</span>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produccion.html">
+                            <span class="material-symbols-rounded">precision_manufacturing</span>
+                            <span>Producción</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="inventario.html">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calidad.html">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Control de Calidad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reportes.html">
+                            <span class="material-symbols-rounded">monitoring</span>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="configuracion.html">
+                            <span class="material-symbols-rounded">settings</span>
+                            <span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <span class="material-symbols-rounded">search</span>
+                    <input type="search" placeholder="Buscar en inventario...">
+                </div>
+                <div class="user-menu">
+                    <div class="menu-buttons">
+                        <button class="icon-button" title="Notificaciones">
+                            <span class="material-symbols-rounded">notifications</span>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="icon-button" title="Ayuda">
+                            <span class="material-symbols-rounded">help</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Juan Pérez</span>
+                            <span class="user-role">Supervisor de Producción</span>
+                        </div>
+                        <button class="icon-button">
+                            <span class="material-symbols-rounded">expand_more</span>
+                        </button>
+                        <div class="user-dropdown">
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-rounded">help</span>
+                                Ayuda
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <span class="material-symbols-rounded">logout</span>
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Inventory Content -->
+            <div class="inventory-content">
+                <div class="inventory-header">
+                    <div class="header-main">
+                        <h1>Control de Inventario</h1>
+                        <div class="header-stats">
+                            <div class="stat-item">
+                                <span class="material-symbols-rounded">inventory_2</span>
+                                <span class="label">Total Productos</span>
+                                <span class="value">156</span>
+                            </div>
+                            <div class="stat-item warning">
+                                <span class="material-symbols-rounded">warning</span>
+                                <span class="label">Stock Bajo</span>
+                                <span class="value">8</span>
+                            </div>
+                            <div class="stat-item success">
+                                <span class="material-symbols-rounded">conveyor_belt</span>
+                                <span class="label">En Producción</span>
+                                <span class="value">12</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="inventory-actions">
+                        <div class="filters">
+                            <button class="filter-button active">Todo</button>
+                            <button class="filter-button">Materias Primas</button>
+                            <button class="filter-button">Productos</button>
+                            <button class="filter-button">Empaques</button>
+                            <button class="filter-button">Stock Bajo</button>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-secondary">
+                                <span class="material-symbols-rounded">download</span>
+                                Exportar
+                            </button>
+                            <button class="btn-primary" data-modal="newItemModal">
+                                <span class="material-symbols-rounded">add</span>
+                                Nuevo Producto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inventory-table-container">
+                    <table class="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Categoría</th>
+                                <th>Stock Actual</th>
+                                <th>Stock Mínimo</th>
+                                <th>Ubicación</th>
+                                <th>Estado</th>
+                                <th>Último Movimiento</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="product-cell">
+                                    <div class="product-name">Tomate Procesado</div>
+                                    <small class="product-code">#MAT001</small>
+                                </td>
+                                <td>Materias Primas</td>
+                                <td>
+                                    <div class="stock-level good">
+                                        <span class="stock-amount">2,500 kg</span>
+                                        <div class="stock-bar">
+                                            <div class="bar-fill" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>500 kg</td>
+                                <td>Almacén A-15</td>
+                                <td>
+                                    <span class="status-badge success">
+                                        <span class="material-symbols-rounded">check_circle</span>
+                                        Normal
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="movement-info">
+                                        <div class="movement-type entry">+500 kg</div>
+                                        <small>Hoy 10:30 AM</small>
+                                    </div>
+                                </td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Ajustar Stock" data-modal="adjustStockModal">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <button class="btn-icon" title="Ver Historial">
+                                        <span class="material-symbols-rounded">history</span>
+                                    </button>
+                                    <button class="btn-icon" title="Más Acciones">
+                                        <span class="material-symbols-rounded">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="product-cell">
+                                    <div class="product-name">Salsa BBQ</div>
+                                    <small class="product-code">#PRD023</small>
+                                </td>
+                                <td>Productos</td>
+                                <td>
+                                    <div class="stock-level warning">
+                                        <span class="stock-amount">150 unid</span>
+                                        <div class="stock-bar">
+                                            <div class="bar-fill" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>300 unid</td>
+                                <td>Almacén B-08</td>
+                                <td>
+                                    <span class="status-badge warning">
+                                        <span class="material-symbols-rounded">warning</span>
+                                        Stock Bajo
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="movement-info">
+                                        <div class="movement-type exit">-200 unid</div>
+                                        <small>Ayer 15:45 PM</small>
+                                    </div>
+                                </td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Ajustar Stock" data-modal="adjustStockModal">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <button class="btn-icon" title="Ver Historial">
+                                        <span class="material-symbols-rounded">history</span>
+                                    </button>
+                                    <button class="btn-icon" title="Más Acciones">
+                                        <span class="material-symbols-rounded">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="product-cell">
+                                    <div class="product-name">Botellas 500ml</div>
+                                    <small class="product-code">#EMP045</small>
+                                </td>
+                                <td>Empaques</td>
+                                <td>
+                                    <div class="stock-level error">
+                                        <span class="stock-amount">50 cajas</span>
+                                        <div class="stock-bar">
+                                            <div class="bar-fill" style="width: 10%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>200 cajas</td>
+                                <td>Almacén C-03</td>
+                                <td>
+                                    <span class="status-badge error">
+                                        <span class="material-symbols-rounded">error</span>
+                                        Crítico
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="movement-info">
+                                        <div class="movement-type exit">-100 cajas</div>
+                                        <small>23 Sept, 2025</small>
+                                    </div>
+                                </td>
+                                <td class="actions">
+                                    <button class="btn-icon" title="Ajustar Stock" data-modal="adjustStockModal">
+                                        <span class="material-symbols-rounded">edit</span>
+                                    </button>
+                                    <button class="btn-icon" title="Ver Historial">
+                                        <span class="material-symbols-rounded">history</span>
+                                    </button>
+                                    <button class="btn-icon" title="Más Acciones">
+                                        <span class="material-symbols-rounded">more_vert</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/modals.js"></script>
+    <script src="js/inventario.js"></script>
+</body>
+</html>

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary: #2F4A40;
+    --primary-hover: #3F6F57;
+    --primary-light: #E8EFE9;
+    --secondary: #7BBF6A;
+    --surface: #ffffff;
+    --border: #E8EFE9;
+    --text-primary: #2F4A40;
+    --text-secondary: #567D5E;
+}

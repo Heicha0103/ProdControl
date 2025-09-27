@@ -1,0 +1,377 @@
+/* Variables */
+:root {
+    --primary: #2E7D32;
+    --primary-light: rgba(46, 125, 50, 0.12);
+    --primary-dark: #1B5E20;
+    --warning: #ED6C02;
+    --warning-light: rgba(237, 108, 2, 0.12);
+    --success: #2EBD59;
+    --success-light: rgba(46, 189, 89, 0.12);
+    --info: #0288D1;
+    --info-light: rgba(2, 136, 209, 0.12);
+    --error: #D32F2F;
+    --error-light: rgba(211, 47, 47, 0.12);
+    --surface-hover: rgba(0, 0, 0, 0.04);
+    --border-color: #E0E0E0;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+}
+
+/* Inventory Content */
+.inventory-content {
+    padding: 24px;
+}
+
+/* Header Section */
+.inventory-header {
+    margin-bottom: 24px;
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header-main h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.header-stats {
+    display: flex;
+    gap: 16px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.stat-item .material-symbols-rounded {
+    color: var(--text-secondary);
+}
+
+.stat-item .label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.stat-item .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.stat-item.warning {
+    border-color: var(--warning);
+    background: var(--warning-light);
+}
+
+.stat-item.warning .material-symbols-rounded,
+.stat-item.warning .value {
+    color: var(--warning);
+}
+
+.stat-item.success {
+    border-color: var(--success);
+    background: var(--success-light);
+}
+
+.stat-item.success .material-symbols-rounded,
+.stat-item.success .value {
+    color: var(--success);
+}
+
+/* Inventory Actions */
+.inventory-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-button {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: white;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+    background: var(--surface-hover);
+}
+
+.filter-button.active {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Table Container */
+.inventory-table-container {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+/* Inventory Table */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 1000px;
+}
+
+.inventory-table th {
+    background: #f5f5f5;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.inventory-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.inventory-table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Product Cell */
+.product-cell {
+    min-width: 200px;
+}
+
+.product-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.product-code {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* Stock Level */
+.stock-level {
+    min-width: 150px;
+}
+
+.stock-amount {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.stock-bar {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.stock-bar .bar-fill {
+    height: 100%;
+    background: var(--success);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.stock-level.warning .bar-fill {
+    background: var(--warning);
+}
+
+.stock-level.error .bar-fill {
+    background: var(--error);
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status-badge .material-symbols-rounded {
+    font-size: 14px;
+}
+
+.status-badge.success {
+    background: var(--success-light);
+    color: var(--success);
+}
+
+.status-badge.warning {
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.status-badge.error {
+    background: var(--error-light);
+    color: var(--error);
+}
+
+/* Movement Info */
+.movement-info {
+    line-height: 1.4;
+}
+
+.movement-type {
+    font-weight: 500;
+}
+
+.movement-type.entry {
+    color: var(--success);
+}
+
+.movement-type.exit {
+    color: var(--warning);
+}
+
+.movement-info small {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* Actions Column */
+.actions {
+    white-space: nowrap;
+}
+
+.btn-icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+    background: var(--surface-hover);
+    color: var(--text-primary);
+}
+
+.btn-icon .material-symbols-rounded {
+    font-size: 18px;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .header-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .header-stats {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .inventory-content {
+        padding: 16px;
+    }
+
+    .inventory-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .filters {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .action-buttons {
+        width: 100%;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        flex: 1;
+        justify-content: center;
+    }
+}

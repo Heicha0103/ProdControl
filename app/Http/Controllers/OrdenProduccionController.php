@@ -10,10 +10,13 @@ use Illuminate\Http\Request;
 class OrdenProduccionController extends Controller
 {
     public function index()
-    {
-        $ordenes = OrdenProduccion::with('producto', 'usuario')->get();
-        return view('ordenes_produccion.index', compact('ordenes'));
-    }
+{
+    $ordenes = OrdenProduccion::with(['producto', 'usuario'])->get();
+    $productos = Producto::all();
+    $usuarios = User::all(); 
+    
+    return view('ordenes_produccion.index', compact('ordenes', 'productos', 'usuarios'));
+}
 
     public function create()
     {

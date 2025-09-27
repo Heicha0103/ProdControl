@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración | ProdControl</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/configuracion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo-leaf.png" alt="ProdControl Logo" class="sidebar-logo">
+                <h1>ProdControl</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ordenes.html">
+                            <span class="material-symbols-rounded">assignment</span>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produccion.html">
+                            <span class="material-symbols-rounded">precision_manufacturing</span>
+                            <span>Producción</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventario.html">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calidad.html">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Control de Calidad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reportes.html">
+                            <span class="material-symbols-rounded">monitoring</span>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="configuracion.html">
+                            <span class="material-symbols-rounded">settings</span>
+                            <span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="search" placeholder="Buscar ajustes...">
+            </div>
+            <div class="user-menu">
+                <div class="menu-buttons">
+                    <button class="icon-button" title="Notificaciones">
+                        <span class="material-symbols-rounded">notifications</span>
+                        <span class="badge">2</span>
+                    </button>
+                    <button class="icon-button" title="Ayuda">
+                        <span class="material-symbols-rounded">help</span>
+                    </button>
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Juan Pérez</span>
+                        <span class="user-role">Supervisor de Producción</span>
+                    </div>
+                    <button class="icon-button">
+                        <span class="material-symbols-rounded">expand_more</span>
+                    </button>
+                    <div class="user-dropdown">
+                        <a href="#" class="dropdown-item">
+                            <span class="material-symbols-rounded">help</span>
+                            Ayuda
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <span class="material-symbols-rounded">logout</span>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="config-content">
+            <div class="config-header">
+                <h1>Configuración del Sistema</h1>
+            </div>
+
+            <div class="config-grid">
+                <!-- Configuración General -->
+                <section class="config-section">
+                    <div class="section-header">
+                        <span class="material-symbols-rounded">settings</span>
+                        <h2>General</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="config-group">
+                            <label>Nombre de la Empresa</label>
+                            <input type="text" value="Empresa S.A." class="form-input">
+                        </div>
+                        <div class="config-group">
+                            <label>Zona Horaria</label>
+                            <select class="form-input">
+                                <option>(GMT-04:00) Santo Domingo</option>
+                                <option>(GMT-05:00) New York</option>
+                                <option>(GMT-06:00) Chicago</option>
+                            </select>
+                        </div>
+                        <div class="config-group">
+                            <label>Idioma del Sistema</label>
+                            <select class="form-input">
+                                <option>Español</option>
+                                <option>English</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Configuración de Líneas de Producción -->
+                <section class="config-section">
+                    <div class="section-header">
+                        <span class="material-symbols-rounded">precision_manufacturing</span>
+                        <h2>Líneas de Producción</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="action-header">
+                            <button class="btn-primary">
+                                <span class="material-symbols-rounded">add</span>
+                                Nueva Línea
+                            </button>
+                        </div>
+                        <table class="config-table">
+                            <thead>
+                                <tr>
+                                    <th>Línea</th>
+                                    <th>Capacidad</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Línea 1</td>
+                                    <td>1000 unidades/hora</td>
+                                    <td>
+                                        <span class="status-badge success">
+                                            <span class="material-symbols-rounded">check_circle</span>
+                                            Activa
+                                        </span>
+                                    </td>
+                                    <td class="actions">
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">delete</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Línea 2</td>
+                                    <td>800 unidades/hora</td>
+                                    <td>
+                                        <span class="status-badge success">
+                                            <span class="material-symbols-rounded">check_circle</span>
+                                            Activa
+                                        </span>
+                                    </td>
+                                    <td class="actions">
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">delete</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Configuración de Usuarios -->
+                <section class="config-section">
+                    <div class="section-header">
+                        <span class="material-symbols-rounded">group</span>
+                        <h2>Usuarios</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="action-header">
+                            <button class="btn-primary">
+                                <span class="material-symbols-rounded">person_add</span>
+                                Nuevo Usuario
+                            </button>
+                        </div>
+                        <table class="config-table">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="user-info">
+                                        <img src="https://ui-avatars.com/api/?name=Juan+Perez" alt="JP" class="avatar-small">
+                                        <div>
+                                            <span>Juan Pérez</span>
+                                            <small>juan@empresa.com</small>
+                                        </div>
+                                    </td>
+                                    <td>Administrador</td>
+                                    <td>
+                                        <span class="status-badge success">
+                                            <span class="material-symbols-rounded">check_circle</span>
+                                            Activo
+                                        </span>
+                                    </td>
+                                    <td class="actions">
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">delete</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="user-info">
+                                        <img src="https://ui-avatars.com/api/?name=Maria+Rodriguez" alt="MR" class="avatar-small">
+                                        <div>
+                                            <span>María Rodríguez</span>
+                                            <small>maria@empresa.com</small>
+                                        </div>
+                                    </td>
+                                    <td>Supervisor</td>
+                                    <td>
+                                        <span class="status-badge success">
+                                            <span class="material-symbols-rounded">check_circle</span>
+                                            Activo
+                                        </span>
+                                    </td>
+                                    <td class="actions">
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">edit</span>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <span class="material-symbols-rounded">delete</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Configuración de Notificaciones -->
+                <section class="config-section">
+                    <div class="section-header">
+                        <span class="material-symbols-rounded">notifications</span>
+                        <h2>Notificaciones</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="config-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Alertas de Calidad</span>
+                                <small>Recibir notificaciones cuando haya problemas de calidad</small>
+                            </label>
+                        </div>
+                        <div class="config-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Órdenes Completadas</span>
+                                <small>Notificar cuando se complete una orden de producción</small>
+                            </label>
+                        </div>
+                        <div class="config-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span>Reportes Semanales</span>
+                                <small>Recibir resumen semanal de producción por email</small>
+                            </label>
+                        </div>
+                        <div class="config-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Mantenimiento Preventivo</span>
+                                <small>Alertas de mantenimiento programado</small>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="config-actions">
+                <button class="btn-secondary">Cancelar</button>
+                <button class="btn-primary">Guardar Cambios</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/modals.js"></script>
+    <script src="js/configuracion.js"></script>
+</body>
+</html>

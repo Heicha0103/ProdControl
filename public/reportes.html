@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes | ProdControl</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/reportes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo-leaf.png" alt="ProdControl Logo" class="sidebar-logo">
+                <h1>ProdControl</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ordenes.html">
+                            <span class="material-symbols-rounded">assignment</span>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produccion.html">
+                            <span class="material-symbols-rounded">precision_manufacturing</span>
+                            <span>Producción</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventario.html">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calidad.html">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Control de Calidad</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="reportes.html">
+                            <span class="material-symbols-rounded">monitoring</span>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="configuracion.html">
+                            <span class="material-symbols-rounded">settings</span>
+                            <span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="search" placeholder="Buscar reportes...">
+            </div>
+            <div class="user-menu">
+                <div class="menu-buttons">
+                    <button class="icon-button" title="Notificaciones">
+                        <span class="material-symbols-rounded">notifications</span>
+                        <span class="badge">2</span>
+                    </button>
+                    <button class="icon-button" title="Ayuda">
+                        <span class="material-symbols-rounded">help</span>
+                    </button>
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Juan Pérez</span>
+                        <span class="user-role">Supervisor de Producción</span>
+                    </div>
+                    <button class="icon-button">
+                        <span class="material-symbols-rounded">expand_more</span>
+                    </button>
+                    <div class="user-dropdown">
+                        <a href="#" class="dropdown-item">
+                            <span class="material-symbols-rounded">help</span>
+                            Ayuda
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <span class="material-symbols-rounded">logout</span>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="reports-content">
+            <div class="reports-header">
+                <div class="header-main">
+                    <h1>Reportes</h1>
+                    <div class="date-range">
+                        <button class="btn-outlined">
+                            <span class="material-symbols-rounded">calendar_today</span>
+                            <span>Últimos 30 días</span>
+                            <span class="material-symbols-rounded">arrow_drop_down</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="report-metrics">
+                    <div class="metric-card">
+                        <span class="material-symbols-rounded">auto_graph</span>
+                        <div class="metric-info">
+                            <span class="metric-value">95.8%</span>
+                            <span class="metric-label">Eficiencia General</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="material-symbols-rounded">verified</span>
+                        <div class="metric-info">
+                            <span class="metric-value">98.2%</span>
+                            <span class="metric-label">Calidad Promedio</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="material-symbols-rounded">speed</span>
+                        <div class="metric-info">
+                            <span class="metric-value">92.5%</span>
+                            <span class="metric-label">Rendimiento</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="material-symbols-rounded">schedule</span>
+                        <div class="metric-info">
+                            <span class="metric-value">96.7%</span>
+                            <span class="metric-label">Disponibilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="card-header">
+                        <h3>Producción por Línea</h3>
+                        <button class="btn-icon">
+                            <span class="material-symbols-rounded">more_vert</span>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-placeholder" id="productionChart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="card-header">
+                        <h3>Calidad por Producto</h3>
+                        <button class="btn-icon">
+                            <span class="material-symbols-rounded">more_vert</span>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-placeholder" id="qualityChart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="card-header">
+                        <h3>Tendencias de Producción</h3>
+                        <button class="btn-icon">
+                            <span class="material-symbols-rounded">more_vert</span>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-placeholder" id="trendsChart">
+                            <!-- Chart will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card table-card">
+                    <div class="card-header">
+                        <h3>Resumen de Órdenes</h3>
+                        <button class="btn-icon">
+                            <span class="material-symbols-rounded">more_vert</span>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <table class="orders-summary">
+                            <thead>
+                                <tr>
+                                    <th>Línea</th>
+                                    <th>Órdenes Completadas</th>
+                                    <th>Eficiencia</th>
+                                    <th>Calidad</th>
+                                    <th>Tendencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Línea 1</td>
+                                    <td>245</td>
+                                    <td>96.5%</td>
+                                    <td>98.2%</td>
+                                    <td class="trend positive">
+                                        <span class="material-symbols-rounded">trending_up</span>
+                                        2.3%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Línea 2</td>
+                                    <td>198</td>
+                                    <td>94.8%</td>
+                                    <td>97.5%</td>
+                                    <td class="trend positive">
+                                        <span class="material-symbols-rounded">trending_up</span>
+                                        1.7%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Línea 3</td>
+                                    <td>167</td>
+                                    <td>92.3%</td>
+                                    <td>96.8%</td>
+                                    <td class="trend negative">
+                                        <span class="material-symbols-rounded">trending_down</span>
+                                        0.8%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/modals.js"></script>
+    <script src="js/reportes.js"></script>
+</body>
+</html>

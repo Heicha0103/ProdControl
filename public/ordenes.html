@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órdenes | ProdControl</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/ordenes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo-leaf.png" alt="ProdControl Logo" class="sidebar-logo">
+                <h1>ProdControl</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="ordenes.html">
+                            <span class="material-symbols-rounded">assignment</span>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produccion.html">
+                            <span class="material-symbols-rounded">precision_manufacturing</span>
+                            <span>Producción</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inventario.html">
+                            <span class="material-symbols-rounded">inventory_2</span>
+                            <span>Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calidad.html">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Control de Calidad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reportes.html">
+                            <span class="material-symbols-rounded">monitoring</span>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="configuracion.html">
+                            <span class="material-symbols-rounded">settings</span>
+                            <span>Configuración</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <span class="material-symbols-rounded">search</span>
+                    <input type="search" placeholder="Buscar órdenes por ID, producto o estado...">
+                </div>
+                <div class="user-menu">
+                    <div class="menu-buttons">
+                        <button class="icon-button" title="Notificaciones">
+                            <span class="material-symbols-rounded">notifications</span>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="icon-button" title="Ayuda">
+                            <span class="material-symbols-rounded">help</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Juan Pérez</span>
+                            <span class="user-role">Supervisor de Producción</span>
+                        </div>
+                        <button class="icon-button">
+                            <span class="material-symbols-rounded">expand_more</span>
+                        </button>
+                        <div class="user-dropdown">
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-rounded">help</span>
+                                Ayuda
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <span class="material-symbols-rounded">logout</span>
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Orders Content -->
+            <div class="orders-content">
+                <div class="orders-header">
+                    <div class="orders-title">
+                        <h1>Órdenes de Producción</h1>
+                        <span class="orders-count">24 órdenes activas</span>
+                    </div>
+                    <div class="orders-actions">
+                        <div class="filters">
+                            <button class="filter-button">
+                                <span class="material-symbols-rounded">filter_list</span>
+                                Filtros
+                            </button>
+                            <button class="filter-button active">Todas</button>
+                            <button class="filter-button">En Proceso</button>
+                            <button class="filter-button">Pendientes</button>
+                            <button class="filter-button">Completadas</button>
+                        </div>
+                        <button class="btn-primary" id="newOrderBtn">
+                            <span class="material-symbols-rounded">add</span>
+                            Nueva Orden
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Modal para Nueva Orden -->
+                <div class="modal" id="newOrderModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Nueva Orden de Producción</h2>
+                            <button class="close-modal">
+                                <span class="material-symbols-rounded">close</span>
+                            </button>
+                        </div>
+                        <form id="newOrderForm" class="modal-form">
+                            <div class="form-group">
+                                <label for="product">Producto</label>
+                                <select id="product" name="product" required>
+                                    <option value="">Seleccionar producto</option>
+                                    <option value="salsa-tomate">Salsa de Tomate</option>
+                                    <option value="salsa-bbq">Salsa BBQ</option>
+                                    <option value="vegetales-mixtos">Vegetales Mixtos</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="quantity">Cantidad</label>
+                                    <input type="number" id="quantity" name="quantity" required min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="unit">Unidad</label>
+                                    <select id="unit" name="unit" required>
+                                        <option value="unidades">Unidades</option>
+                                        <option value="kg">Kilogramos</option>
+                                        <option value="litros">Litros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="startDate">Fecha de Inicio</label>
+                                    <input type="date" id="startDate" name="startDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate">Fecha de Entrega</label>
+                                    <input type="date" id="endDate" name="endDate" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="line">Línea de Producción</label>
+                                <select id="line" name="line" required>
+                                    <option value="">Seleccionar línea</option>
+                                    <option value="linea-1">Línea 1</option>
+                                    <option value="linea-2">Línea 2</option>
+                                    <option value="linea-3">Línea 3</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Notas Adicionales</label>
+                                <textarea id="notes" name="notes" rows="3"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" id="cancelOrder">Cancelar</button>
+                                <button type="submit" class="btn-primary">Crear Orden</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="orders-grid">
+                    <!-- Order Card -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <span class="material-symbols-rounded">description</span>
+                                Orden #12345
+                            </div>
+                            <span class="order-status in-progress">En Proceso</span>
+                        </div>
+                        <div class="order-content">
+                            <h3 class="order-product">Salsa de Tomate</h3>
+                            <div class="order-details">
+                                <div class="detail-item">
+                                    <span class="label">Cantidad:</span>
+                                    <span class="value">5,000 unidades</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Línea:</span>
+                                    <span class="value">Línea 2</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Inicio:</span>
+                                    <span class="value">25 Sept, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Entrega:</span>
+                                    <span class="value">27 Sept, 2025</span>
+                                </div>
+                            </div>
+                            <div class="order-progress">
+                                <div class="progress-info">
+                                    <span>Progreso</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-footer">
+                            <button class="btn-icon" title="Ver detalles">
+                                <span class="material-symbols-rounded">visibility</span>
+                            </button>
+                            <button class="btn-icon" title="Editar orden">
+                                <span class="material-symbols-rounded">edit</span>
+                            </button>
+                            <button class="btn-icon" title="Más opciones">
+                                <span class="material-symbols-rounded">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Order Card - Pending -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <span class="material-symbols-rounded">description</span>
+                                Orden #12346
+                            </div>
+                            <span class="order-status pending">Pendiente</span>
+                        </div>
+                        <div class="order-content">
+                            <h3 class="order-product">Vegetales Mixtos</h3>
+                            <div class="order-details">
+                                <div class="detail-item">
+                                    <span class="label">Cantidad:</span>
+                                    <span class="value">3,000 unidades</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Línea:</span>
+                                    <span class="value">Línea 1</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Inicio:</span>
+                                    <span class="value">26 Sept, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Entrega:</span>
+                                    <span class="value">28 Sept, 2025</span>
+                                </div>
+                            </div>
+                            <div class="order-progress">
+                                <div class="progress-info">
+                                    <span>Progreso</span>
+                                    <span>0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-footer">
+                            <button class="btn-icon" title="Ver detalles">
+                                <span class="material-symbols-rounded">visibility</span>
+                            </button>
+                            <button class="btn-icon" title="Editar orden">
+                                <span class="material-symbols-rounded">edit</span>
+                            </button>
+                            <button class="btn-icon" title="Más opciones">
+                                <span class="material-symbols-rounded">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Order Card - Completed -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-id">
+                                <span class="material-symbols-rounded">description</span>
+                                Orden #12344
+                            </div>
+                            <span class="order-status completed">Completada</span>
+                        </div>
+                        <div class="order-content">
+                            <h3 class="order-product">Salsa BBQ</h3>
+                            <div class="order-details">
+                                <div class="detail-item">
+                                    <span class="label">Cantidad:</span>
+                                    <span class="value">2,500 unidades</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Línea:</span>
+                                    <span class="value">Línea 3</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Inicio:</span>
+                                    <span class="value">23 Sept, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Entrega:</span>
+                                    <span class="value">25 Sept, 2025</span>
+                                </div>
+                            </div>
+                            <div class="order-progress">
+                                <div class="progress-info">
+                                    <span>Progreso</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress completed" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-footer">
+                            <button class="btn-icon" title="Ver detalles">
+                                <span class="material-symbols-rounded">visibility</span>
+                            </button>
+                            <button class="btn-icon" title="Descargar reporte">
+                                <span class="material-symbols-rounded">download</span>
+                            </button>
+                            <button class="btn-icon" title="Más opciones">
+                                <span class="material-symbols-rounded">more_vert</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/dashboard.js"></script>
+    <script src="js/ordenes.js"></script>
+</body>
+</html>
